@@ -1,0 +1,4 @@
+services:
+    rabbit_mq:
+        ports:
+            - 5672:5672

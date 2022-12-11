@@ -1,0 +1,14 @@
+services:
+    rabbit_mq:
+        container_name: rabbit
+        image: rabbitmq:3.10-management
+        expose:
+            - 5672
+        ports:
+            - 15672:15672
+        volumes:
+            - rabbit_data:/var/lib/rabbitmq
+
+
+volumes:
+    rabbit_data:
