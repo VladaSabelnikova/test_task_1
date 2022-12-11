@@ -1,7 +1,12 @@
 """Модуль содержит настройки различных сервисов."""
+from logging import config as logging_config
+
 from pydantic import SecretStr, BaseModel
 
 from src.config.base_config import BaseConfig
+from src.config.logging_settings import LOGGING
+
+logging_config.dictConfig(LOGGING)
 
 
 class RabbitSettings(BaseModel):

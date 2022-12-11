@@ -2,11 +2,10 @@
 import uvicorn
 from fastapi import FastAPI, Depends, Header
 
-from src.api.config.logging_settings import LOGGING
 from src.api.startup_shutdown import startup, shutdown
-from src.config.settings import config
-
 from src.api.utils.rate_limiter import requests_per_minute
+from src.config.logging_settings import LOGGING
+from src.config.settings import config
 from src.message_brokers.rabbit_message_broker import message_broker_factory
 
 app = FastAPI(

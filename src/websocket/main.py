@@ -5,6 +5,7 @@ import uvicorn
 from fastapi import FastAPI, Depends
 from starlette.websockets import WebSocket
 
+from src.config.logging_settings import LOGGING
 from src.config.settings import config
 from src.message_brokers.abstract_classes import AbstractMessageBroker
 from src.message_brokers.rabbit_message_broker import get_message_broker
@@ -38,5 +39,6 @@ if __name__ == '__main__':
     uvicorn.run(
         'main:app',
         host=config.ws.host,
-        port=config.ws.port
+        port=config.ws.port,
+        log_config=LOGGING,
     )
