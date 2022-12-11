@@ -1,0 +1,26 @@
+# Модуль содержит настройки для интерпретатора.
+[tool.poetry]
+name = "test_task_1"
+version = "0.1.0"
+description = ""
+authors = ["Vlada Sabelnikova <vladasabelnikova@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+pydantic = {extras = ["dotenv"], version = "^1.9.1"}
+aio-pika = "^8.1.0"
+websockets = "^10.3"
+fastapi = "^0.78.0"
+uvicorn = "^0.17.6"
+uvloop = "^0.16.0"
+
+[tool.poetry.dev-dependencies]
+flake8 = "^4.0.1"
+mypy = "^0.950"
+wemake-python-styleguide = "^0.16.1"
+types-requests = "^2.27.29"
+
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
