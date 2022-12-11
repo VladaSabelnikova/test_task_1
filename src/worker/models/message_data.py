@@ -3,7 +3,7 @@ from typing import Union, Optional
 
 from pydantic import validator
 
-from src.worker.models.base_config import BaseConfig
+from src.worker.models.base_config import BaseConfig  # type: ignore
 
 
 class MessageData(BaseConfig):

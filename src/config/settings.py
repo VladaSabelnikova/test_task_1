@@ -42,6 +42,14 @@ class APISettings(BaseModel):
     rate_limit: int
 
 
+class WebsocketSettings(BaseModel):
+
+    """Настройки API с Websocket-ом."""
+
+    host: str
+    port: int
+
+
 class Config(BaseConfig):
 
     """Настройки всех приложений."""
@@ -49,6 +57,7 @@ class Config(BaseConfig):
     redis: RedisSettings
     rabbit: RabbitSettings
     api: APISettings
+    ws: WebsocketSettings
 
 
 config = Config()

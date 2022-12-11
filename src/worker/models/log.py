@@ -1,5 +1,5 @@
 """Модуль содержит содержимое для логгеров в виде pydantic моделей."""
-from src.worker.models.base_config import BaseConfig
+from src.worker.models.base_config import BaseConfig  # type: ignore
 
 
 class LogInfo(BaseConfig):

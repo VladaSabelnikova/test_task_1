@@ -1,3 +1,4 @@
+# flake8: noqa
 """Модуль содержит базовый класс."""
 from typing import Any
 

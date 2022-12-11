@@ -1,3 +1,4 @@
+"""Модуль содержит API с websocket-ом."""
 from typing import Callable
 
 import uvicorn
@@ -36,6 +37,6 @@ async def websocket_endpoint(
 if __name__ == '__main__':
     uvicorn.run(
         'main:app',
-        host='localhost',
-        port=8001
+        host=config.ws.host,
+        port=config.ws.port
     )

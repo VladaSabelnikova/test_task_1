@@ -4,7 +4,7 @@ import logging
 
 from src.config.settings import config
 from src.message_brokers.rabbit_message_broker import message_broker_factory
-from src.worker.callback import callback
+from src.worker.callback import callback  # type: ignore
 
 
 async def main() -> None:
