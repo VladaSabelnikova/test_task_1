@@ -16,6 +16,8 @@ app = FastAPI(
     on_shutdown=[
         shutdown
     ],
+    openapi_url='/openapi.json',
+    docs_url='/openapi'
 )
 
 
@@ -24,7 +26,7 @@ app = FastAPI(
     dependencies=[Depends(requests_per_minute(config.api.rate_limit))],
 )
 async def root(
-    text: bytes,
+    text: str,
     x_request_id: str = Header(),
 ) -> dict:
     """
@@ -39,7 +41,7 @@ async def root(
     """
 
     result = await message_broker_factory.publish(
-        message_body=text,
+        message_body=text.encode(),
         queue_name=config.rabbit.alive_queue,
         message_headers={'X-Request-Id': x_request_id}
     )

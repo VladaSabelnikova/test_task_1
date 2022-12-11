@@ -239,3 +239,8 @@ message_broker_factory = RabbitMessageBroker(
     login=config.rabbit.login,
     password=config.rabbit.password
 )
+
+
+async def get_message_broker() -> AbstractMessageBroker:
+    """Функция возвращает объект message_broker."""
+    return message_broker_factory
