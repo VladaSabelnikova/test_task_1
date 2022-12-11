@@ -1,5 +1,4 @@
 """Модуль содержит настройки различных сервисов."""
-
 from pydantic import SecretStr, BaseModel
 
 from src.config.base_config import BaseConfig
@@ -35,7 +34,8 @@ class RedisSettings(BaseModel):
 
 
 class APISettings(BaseModel):
-    """Настройки FastAPI."""
+
+    """Настройки API."""
 
     host: str
     port: int

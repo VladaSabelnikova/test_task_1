@@ -47,4 +47,4 @@ async def callback(message: AbstractIncomingMessage) -> None:  # noqa: WPS231,WP
         return await message.reject()
 
 
-logger = logging.getLogger('worker')
+logger = logging.getLogger('worker_callback')
