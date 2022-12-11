@@ -1,9 +1,11 @@
-"""Модуль содержит настройки для RabbitMQ."""
+"""Модуль содержит настройки различных сервисов."""
 
-from pydantic import BaseSettings, SecretStr
+from pydantic import SecretStr, BaseModel, BaseSettings
+
+from src.config.base_config import BaseConfig
 
 
-class RabbitSettings(BaseSettings):
+class RabbitSettings(BaseModel):
 
     """Настройки RabbitMQ."""
 
@@ -19,26 +21,33 @@ class RabbitSettings(BaseSettings):
     default_message_ttl_ms: int
     max_retry_count: int
     kill_signal: bytes
-    queue_convert_tasks: str
-    queue_progress_bar: str
     max_timeout: int
-
-    class Config:
-        """
-        Настройки pydantic.
-        Подробнее см.
-        https://pydantic-docs.helpmanual.io/usage/model_config/
-        """
-
-        env_file = '.env'
-        env_file_encoding = 'utf-8'
+    alive_queue: str
 
 
-class Config(BaseSettings):
+class RedisSettings(BaseModel):
+    """Настройки Redis."""
 
-    """Класс с конфигурацией проекта."""
+    db_rate_limiter: int
+    host: str
+    port: int
 
-    rabbit: RabbitSettings = RabbitSettings()
+
+class APISettings(BaseModel):
+    """Настройки FastAPI."""
+
+    host: str
+    port: int
+    rate_limit: int
 
 
-config = Config()
+class StorageConfig(BaseConfig):
+
+    """Настройки всех приложений."""
+
+    redis: RedisSettings
+    rabbit: RabbitSettings
+    api: APISettings
+
+
+config = StorageConfig()
