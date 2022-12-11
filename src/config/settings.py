@@ -1,6 +1,6 @@
 """Модуль содержит настройки различных сервисов."""
 
-from pydantic import SecretStr, BaseModel, BaseSettings
+from pydantic import SecretStr, BaseModel
 
 from src.config.base_config import BaseConfig
 
@@ -23,6 +23,7 @@ class RabbitSettings(BaseModel):
     kill_signal: bytes
     max_timeout: int
     alive_queue: str
+    websocket_queue: str
 
 
 class RedisSettings(BaseModel):
@@ -41,7 +42,7 @@ class APISettings(BaseModel):
     rate_limit: int
 
 
-class StorageConfig(BaseConfig):
+class Config(BaseConfig):
 
     """Настройки всех приложений."""
 
@@ -50,4 +51,4 @@ class StorageConfig(BaseConfig):
     api: APISettings
 
 
-config = StorageConfig()
+config = Config()
