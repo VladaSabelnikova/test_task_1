@@ -5,3 +5,11 @@ services:
     redis:
         ports:
             - 6379:6379
+
+    api:
+        ports:
+            - 8000:8000
+
+    websocket:
+        ports:
+            - 8001:8001

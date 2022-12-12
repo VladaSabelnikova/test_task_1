@@ -20,6 +20,38 @@ services:
         command: redis-server /usr/local/etc/redis/redis.conf
 
 
+    api:
+        build:
+            context: .
+            dockerfile: api.DockerFile
+        container_name: api
+        expose:
+            - 8000
+        volumes:
+            - api_data:/data
+
+    websocket:
+        build:
+            context: .
+            dockerfile: websocket.DockerFile
+        container_name: websocket
+        expose:
+            - 8001
+        volumes:
+            - websocket_data:/data
+
+    worker:
+        build:
+            context: .
+            dockerfile: worker.DockerFile
+        container_name: worker
+        volumes:
+            - worker_data:/data
+
+
 volumes:
     rabbit_data:
     redis_data:
+    api_data:
+    websocket_data:
+    worker_data:
