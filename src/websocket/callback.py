@@ -18,7 +18,7 @@ def callback(websocket: WebSocket) -> Callable:
 
     async def inner(message: AbstractIncomingMessage) -> None:
         """
-        Callback брокера.
+        Функция Callback брокера.
 
         Args:
             message: сообщение из Rabbit
