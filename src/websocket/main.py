@@ -10,8 +10,12 @@ from src.config.settings import config
 from src.message_brokers.abstract_classes import AbstractMessageBroker
 from src.message_brokers.rabbit_message_broker import get_message_broker
 from src.websocket.callback import get_callback
+from src.websocket.startup import startup
 
 app = FastAPI(
+    on_startup=[
+        startup
+    ],
     openapi_url='/openapi.json',
     docs_url='/openapi'
 )
