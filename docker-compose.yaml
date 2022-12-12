@@ -8,6 +8,11 @@ services:
             - 15672:15672
         volumes:
             - rabbit_data:/var/lib/rabbitmq
+        healthcheck:
+            test: rabbitmq-diagnostics -q check_running && rabbitmq-diagnostics -q check_local_alarms
+            interval: 10s
+            timeout: 5s
+            retries: 3
 
     redis:
         image: redis:6.2.6
@@ -30,8 +35,10 @@ services:
         volumes:
             - api_data:/data
         depends_on:
-            - rabbit_mq
-            - redis
+            rabbit_mq:
+                condition: service_healthy
+            redis:
+                condition: service_started
 
     websocket:
         build:
@@ -43,7 +50,8 @@ services:
         volumes:
             - websocket_data:/data
         depends_on:
-            - rabbit_mq
+            rabbit_mq:
+                condition: service_healthy
 
     worker:
         build:
@@ -53,7 +61,8 @@ services:
         volumes:
             - worker_data:/data
         depends_on:
-            - rabbit_mq
+            rabbit_mq:
+                condition: service_healthy
 
 
 volumes:
