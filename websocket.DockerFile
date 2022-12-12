@@ -16,9 +16,10 @@ COPY src/__init__.py .
 COPY src/config ./config
 COPY src/message_brokers ./message_brokers
 COPY src/utils ./utils
-
 COPY src/websocket ./websocket
 
 WORKDIR /
 
-CMD export PYTHONPATH=${PYTHONPATH}:${PWD} && poetry run python src/websocket/main.py
+ENV PYTHONPATH "${PYTHONPATH}:${PWD}"
+
+CMD poetry run python src/websocket/main.py
