@@ -1,3 +1,5 @@
+# flake8: noqa
+# type: ignore
 """Модуль содержит demo функцию для отправки запросов к API."""
 from time import sleep
 
