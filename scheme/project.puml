@@ -1,0 +1,47 @@
+@startuml
+<style>
+    package {
+        backgroundcolor #CCC
+        Shadowing 1
+    }
+    document {
+        backgroundcolor #949494
+    }
+    frame {
+        backgroundcolor #EEE
+    }
+    database, cloud {
+        backgroundcolor #A5CEF0
+    }
+    queue {
+        backgroundcolor #F78F8F
+    }
+    actor {
+        linethickness 3
+        linecolor #2B2B2B
+    }
+    arrow {
+        linethickness 2
+        linecolor #2B2B2B
+    }
+    folder {
+        backgroundcolor #FFCD73
+    }
+
+</style>
+
+package "test_task" {
+    frame api as "API" {
+    }
+    frame ws as "websocket" {
+    }
+    frame worker {
+    }
+    queue rabbit {
+    }
+}
+
+api -r-> rabbit
+rabbit <-up-> worker
+rabbit -> ws
+@enduml
