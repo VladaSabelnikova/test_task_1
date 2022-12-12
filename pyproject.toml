@@ -16,6 +16,7 @@ uvloop = "^0.16.0"
 python-dotenv = "^0.21.0"
 aioredis = "^2.0.1"
 orjson = "^3.8.3"
+httpx = "^0.23.1"
 
 [tool.poetry.dev-dependencies]
 flake8 = "^4.0.1"
