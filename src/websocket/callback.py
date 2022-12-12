@@ -17,6 +17,12 @@ def callback(websocket: WebSocket) -> Callable:
     """
 
     async def inner(message: AbstractIncomingMessage) -> None:
+        """
+        Callback брокера.
+
+        Args:
+            message: сообщение из Rabbit
+        """
         await websocket.send_text(f'{message.body.decode()}')  # noqa: WPS237
         await message.ack()
 

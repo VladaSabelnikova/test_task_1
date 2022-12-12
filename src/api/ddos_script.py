@@ -19,9 +19,10 @@ def main() -> None:
     """
 
     url = 'http://localhost:8000/queue_reverse_text?text=vlada'
-    headers = {'X-Request-Id': '12345', 'Authorization': JWT_TOKEN}
+    headers = {'X-Request-Id': None, 'Authorization': JWT_TOKEN}
 
-    for _ in range(50):  # Пробуем DDOS-ить API.
+    for i in range(50):  # Пробуем DDOS-ить API.
+        headers['X-Request-Id'] = str(i)
         response = httpx.post(url=url, headers=headers)
         print(response.status_code, response.text)
         sleep(1.5)

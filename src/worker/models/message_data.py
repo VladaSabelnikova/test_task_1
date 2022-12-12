@@ -17,7 +17,7 @@ class MessageData(BaseConfig):
     @validator('x_request_id')
     def x_request_id_to_str(cls, message: dict) -> Optional[str]:
         """
-        Метод выкусывает из словаря с заголовками нужный ключ.
+        Метод достаёт из словаря с заголовками нужный ключ.
 
         Args:
             message: сообщение
@@ -30,7 +30,7 @@ class MessageData(BaseConfig):
     @validator('count_retry')
     def dict_to_int(cls, message: dict) -> int:
         """
-        Метод выкусывает из словаря с заголовками нужный ключ.
+        Метод достаёт из словаря с заголовками нужный ключ.
 
         Args:
             message: сообщение
